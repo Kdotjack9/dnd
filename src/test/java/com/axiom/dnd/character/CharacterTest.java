@@ -3,7 +3,10 @@ package com.axiom.dnd.character;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class CharacterTest {
     private Character testObj = null;
@@ -82,5 +85,14 @@ public class CharacterTest {
         testObj.setAbilityScore(AbilityName.CHA, charismaScore);
         assertEquals(charismaScore, testObj.getAbilityScore(AbilityName.CHA));
         assertEquals(charismaModifier, testObj.getAbilityModifier(AbilityName.CHA));
+    }
+
+    @Test
+    public void testSkills() {
+        Integer numberOfSkills = 18;
+        testObj.initializeCharacter();
+        Map<String, Skill> skills = testObj.getSkills();
+        assertEquals(numberOfSkills, skills.size());
+        assertFalse(skills.get(SkillName.ATHLETICS.toString()).isProficient());
     }
 }

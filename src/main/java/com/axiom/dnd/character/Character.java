@@ -5,9 +5,11 @@ import java.util.Map;
 
 public class Character {
     private Map<String, AbilityScore> abilityScores = null;
+    private Map<String, Skill> skills = null;
 
     public void initializeCharacter() {
         initializeAbilityScores();
+        initializeSkills();
     }
 
     public void createCharacter() {
@@ -40,5 +42,37 @@ public class Character {
 
     public Integer getAbilityModifier(AbilityName abilityName){
         return this.abilityScores.get(abilityName.toString()).getModifier();
+    }
+
+    public void initializeSkills() {
+        this.skills = new HashMap<>();
+        this.skills.put(SkillName.ATHLETICS.toString(), skillFactory(AbilityName.STR));
+        this.skills.put(SkillName.ACROBATICS.toString(), skillFactory(AbilityName.DEX));
+        this.skills.put(SkillName.SLEIGHTOFHAND.toString(), skillFactory(AbilityName.DEX));
+        this.skills.put(SkillName.STEALTH.toString(), skillFactory(AbilityName.DEX));
+        this.skills.put(SkillName.ARCANA.toString(), skillFactory(AbilityName.INT));
+        this.skills.put(SkillName.HISTORY.toString(), skillFactory(AbilityName.INT));
+        this.skills.put(SkillName.INVESTIGATION.toString(), skillFactory(AbilityName.INT));
+        this.skills.put(SkillName.NATURE.toString(), skillFactory(AbilityName.INT));
+        this.skills.put(SkillName.RELIGION.toString(), skillFactory(AbilityName.INT));
+        this.skills.put(SkillName.ANIMALHANDLING.toString(), skillFactory(AbilityName.WIS));
+        this.skills.put(SkillName.INSIGHT.toString(), skillFactory(AbilityName.WIS));
+        this.skills.put(SkillName.MEDICINE.toString(), skillFactory(AbilityName.WIS));
+        this.skills.put(SkillName.PERCEPTION.toString(), skillFactory(AbilityName.WIS));
+        this.skills.put(SkillName.SURVIVAL.toString(), skillFactory(AbilityName.WIS));
+        this.skills.put(SkillName.DECEPTION.toString(), skillFactory(AbilityName.CHA));
+        this.skills.put(SkillName.INTIMIDATION.toString(), skillFactory(AbilityName.CHA));
+        this.skills.put(SkillName.PERFORMANCE.toString(), skillFactory(AbilityName.CHA));
+        this.skills.put(SkillName.PERSUASION.toString(), skillFactory(AbilityName.CHA));
+    }
+
+    public Skill skillFactory(AbilityName abilityName) {
+        Skill skill = new Skill();
+        skill.setAbility(abilityName);
+        return skill;
+    }
+
+    public Map<String, Skill> getSkills() {
+        return this.skills;
     }
 }
