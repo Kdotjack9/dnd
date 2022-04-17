@@ -102,6 +102,14 @@ public class CharacterTest {
         testObj.initializeCharacter();
         Map<String, Feat> feats = testObj.getFeats();
         assertEquals(numberOfFeats, feats.size());
+        String featName = "A Feat";
+        Feat feat = new Feat();
+        feat.setName(featName);
+        testObj.addFeat(feat);
+        numberOfFeats = 1;
+        feats = testObj.getFeats();
+        assertEquals(numberOfFeats, feats.size());
+        assertEquals(featName, feats.get(featName).getName());
     }
 
     @Test
@@ -110,5 +118,13 @@ public class CharacterTest {
         testObj.initializeCharacter();
         Map<String, Ability> abilities = testObj.getAbilities();
         assertEquals(numberOfAbilities, abilities.size());
+        String abilityName = "An Ability";
+        Ability ability = new Ability();
+        ability.setName(abilityName);
+        testObj.addAbility(ability);
+        numberOfAbilities = 1;
+        abilities = testObj.getAbilities();
+        assertEquals(numberOfAbilities, abilities.size());
+        assertEquals(abilityName, abilities.get(abilityName).getName());
     }
 }

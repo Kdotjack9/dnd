@@ -88,11 +88,19 @@ public class Character {
         return feats;
     }
 
+    public void addFeat(Feat feat) {
+        this.feats.put(feat.getName(), feat);
+    }
+
     public void initializeAbilities() {
         abilities = new HashMap<>();
     }
 
     public Map<String, Ability> getAbilities() {
         return abilities;
+    }
+
+    public void addAbility(Ability ability) {
+        this.abilities.put(ability.getName(), ability);
     }
 }
