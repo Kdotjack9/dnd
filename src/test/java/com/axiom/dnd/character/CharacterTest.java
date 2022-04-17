@@ -88,11 +88,27 @@ public class CharacterTest {
     }
 
     @Test
-    public void testSkills() {
+    public void testGetSkills() {
         Integer numberOfSkills = 18;
         testObj.initializeCharacter();
         Map<String, Skill> skills = testObj.getSkills();
         assertEquals(numberOfSkills, skills.size());
         assertFalse(skills.get(SkillName.ATHLETICS.toString()).isProficient());
+    }
+
+    @Test
+    public void testFeats() {
+        Integer numberOfFeats = 0;
+        testObj.initializeCharacter();
+        Map<String, Feat> feats = testObj.getFeats();
+        assertEquals(numberOfFeats, feats.size());
+    }
+
+    @Test
+    public void testAbilities(){
+        Integer numberOfAbilities = 0;
+        testObj.initializeCharacter();
+        Map<String, Ability> abilities = testObj.getAbilities();
+        assertEquals(numberOfAbilities, abilities.size());
     }
 }
