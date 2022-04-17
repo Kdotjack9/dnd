@@ -6,10 +6,14 @@ import java.util.Map;
 public class Character {
     private Map<String, AbilityScore> abilityScores = null;
     private Map<String, Skill> skills = null;
+    private Map<String, Feat> feats = null;
+    private Map<String, Ability> abilities = null;
 
     public void initializeCharacter() {
         initializeAbilityScores();
         initializeSkills();
+        initializeFeats();
+        initializeAbilities();
     }
 
     public void createCharacter() {
@@ -74,5 +78,21 @@ public class Character {
 
     public Map<String, Skill> getSkills() {
         return this.skills;
+    }
+
+    public void initializeFeats(){
+        feats = new HashMap<>();
+    }
+
+    public Map<String, Feat> getFeats() {
+        return feats;
+    }
+
+    public void initializeAbilities() {
+        abilities = new HashMap<>();
+    }
+
+    public Map<String, Ability> getAbilities() {
+        return abilities;
     }
 }
