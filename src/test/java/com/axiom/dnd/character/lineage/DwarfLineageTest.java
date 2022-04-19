@@ -46,4 +46,11 @@ public class DwarfLineageTest {
         String abilityName = "Darkvision";
         assertEquals(abilityName, testObj.getAbilities().get(abilityName).getName());
     }
+
+    @Test
+    public void testDwarvenResilience(){
+        testObj.initialize();
+        String abilityName = "Dwarven Resilience";
+        assertEquals(abilityName, testObj.getAbilities().get(abilityName).getName());
+    }
 }
