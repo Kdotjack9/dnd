@@ -1,19 +1,23 @@
 package com.axiom.dnd.character;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Character {
     private Map<String, AbilityScore> abilityScores = null;
     private Map<String, Skill> skills = null;
     private Map<String, Feat> feats = null;
     private Map<String, Ability> abilities = null;
+    private Set<String> proficiencies = null;
 
     public void initializeCharacter() {
         initializeAbilityScores();
         initializeSkills();
         initializeFeats();
         initializeAbilities();
+        this.proficiencies = new HashSet<>();
     }
 
     public void createCharacter() {
@@ -102,5 +106,13 @@ public class Character {
 
     public void addAbility(Ability ability) {
         this.abilities.put(ability.getName(), ability);
+    }
+
+    public Set<String> getProficiencies(){
+        return this.proficiencies;
+    }
+
+    public void addProficiency(ProficiencyName proficiencyName) {
+        this.proficiencies.add(proficiencyName.toString());
     }
 }

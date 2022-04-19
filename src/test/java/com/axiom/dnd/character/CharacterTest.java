@@ -4,9 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
+import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CharacterTest {
     private Character testObj = null;
@@ -126,5 +126,18 @@ public class CharacterTest {
         abilities = testObj.getAbilities();
         assertEquals(numberOfAbilities, abilities.size());
         assertEquals(abilityName, abilities.get(abilityName).getName());
+    }
+
+    @Test
+    public void testProficiencies() {
+        Integer numberOfProficiencies = 0;
+        testObj.initializeCharacter();
+        Set<String> proficiencies = testObj.getProficiencies();
+        assertEquals(numberOfProficiencies, proficiencies.size());
+        testObj.addProficiency(ProficiencyName.BATTLEAXE);
+        numberOfProficiencies = 1;
+        proficiencies = testObj.getProficiencies();
+        assertEquals(numberOfProficiencies, proficiencies.size());
+        assertTrue(proficiencies.contains(ProficiencyName.BATTLEAXE.toString()));
     }
 }
