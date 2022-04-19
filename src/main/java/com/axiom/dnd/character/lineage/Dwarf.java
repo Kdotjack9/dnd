@@ -1,11 +1,9 @@
 package com.axiom.dnd.character.lineage;
 
-import com.axiom.dnd.character.Ability;
-import com.axiom.dnd.character.AbilityName;
-import com.axiom.dnd.character.Size;
-import com.axiom.dnd.character.SizeName;
+import com.axiom.dnd.character.*;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Dwarf extends Lineage{
     @Override
@@ -17,6 +15,7 @@ public class Dwarf extends Lineage{
         this.speed = 30;
         addAbility(generateDarkvision());
         addAbility(generateDwarvenResilience());
+        initializeProficiencies();
     }
 
     private Ability generateDarkvision() {
@@ -29,5 +28,13 @@ public class Dwarf extends Lineage{
         Ability ability = new Ability();
         ability.setName("Dwarven Resilience");
         return ability;
+    }
+
+    private void initializeProficiencies(){
+        this.proficiencies = new HashSet<>();
+        proficiencies.add(ProficiencyName.BATTLEAXE.toString());
+        proficiencies.add(ProficiencyName.HANDAXE.toString());
+        proficiencies.add(ProficiencyName.LIGHTHAMMER.toString());
+        proficiencies.add(ProficiencyName.WARHAMMER.toString());
     }
 }

@@ -1,14 +1,17 @@
 package com.axiom.dnd.character.lineage;
 
 import com.axiom.dnd.character.AbilityName;
+import com.axiom.dnd.character.ProficiencyName;
 import com.axiom.dnd.character.Size;
 import com.axiom.dnd.character.SizeName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DwarfLineageTest {
     Lineage testObj = null;
@@ -52,5 +55,17 @@ public class DwarfLineageTest {
         testObj.initialize();
         String abilityName = "Dwarven Resilience";
         assertEquals(abilityName, testObj.getAbilities().get(abilityName).getName());
+    }
+
+    @Test
+    public void testDwarfProficiencies(){
+        testObj.initialize();
+        Set<String> proficiencies = testObj.getProficiencies();
+        Integer numberOfProficiencies = 4;
+        assertEquals(numberOfProficiencies, proficiencies.size());
+        assertTrue(proficiencies.contains(ProficiencyName.BATTLEAXE.toString()));
+        assertTrue(proficiencies.contains(ProficiencyName.HANDAXE.toString()));
+        assertTrue(proficiencies.contains(ProficiencyName.LIGHTHAMMER.toString()));
+        assertTrue(proficiencies.contains(ProficiencyName.WARHAMMER.toString()));
     }
 }
