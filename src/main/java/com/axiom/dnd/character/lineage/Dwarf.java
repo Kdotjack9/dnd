@@ -16,11 +16,18 @@ public class Dwarf extends Lineage{
         this.size = new Size(SizeName.MEDIUM);
         this.speed = 30;
         addAbility(generateDarkvision());
+        addAbility(generateDwarvenResilience());
     }
 
     private Ability generateDarkvision() {
         Ability ability = new Ability();
         ability.setName("Darkvision");
+        return ability;
+    }
+
+    private Ability generateDwarvenResilience(){
+        Ability ability = new Ability();
+        ability.setName("Dwarven Resilience");
         return ability;
     }
 }
