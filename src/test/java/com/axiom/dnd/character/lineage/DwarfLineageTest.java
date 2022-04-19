@@ -39,4 +39,11 @@ public class DwarfLineageTest {
         Integer speed = 30;
         assertEquals(speed, testObj.getSpeed());
     }
+
+    @Test
+    public void testDarkvision(){
+        testObj.initialize();
+        String abilityName = "Darkvision";
+        assertEquals(abilityName, testObj.getAbilities().get(abilityName).getName());
+    }
 }
